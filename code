@@ -1,0 +1,101 @@
+
+
+
+#include <iostream>
+using namespace std;
+
+
+int uSelection;
+int account_balance;
+string user_name;
+
+
+int withdraw(int);
+int deposit(int);
+
+
+int main()
+{
+    cout << "What is your name?" << endl; // ask user for name 
+    cin >> user_name; // store user's name is user_name variable
+    cout << "What is your account balance?" << endl;
+    cin >> account_balance;
+    while (true) {
+        cout << "*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *" << endl;
+        cout << " Welcome to the bank, " << user_name << "!" << endl;
+        cout << endl;
+        cout << " Your account balance is : $" << account_balance << endl;
+        cout << endl;
+        cout << " To make a deposit please press 1. To withdraw, please press 2. Press 3 to exit." << endl;
+        cout << "*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *" << endl;
+        cin >> uSelection;
+        if (uSelection == 1)
+        {
+            deposit(account_balance);
+        }
+        else if (uSelection == 2)
+        {
+            withdraw(account_balance);
+        }
+        else if (uSelection == 3)
+        {
+            cout << "Thank you for visiting the bank, " << user_name << "!" << endl;
+            break;
+        }
+
+   }
+      
+}
+
+int deposit(int balance)
+{
+    int user;
+
+    cout << " How much would you like to deposit into your account?: $";   //prompt user for desposit amount
+    cin >> user;              // store deposit amount in desposit amount variable
+    if (user < 0) {
+        cout << "You have entered a negative number. Please don't :3" << endl;
+        cout << " How much would you like to deposit into your account?" << endl;
+        cin >> user;
+    }
+    account_balance = user + balance;        // add deposit amount into account balance 
+    cout << "You deposited $" << user << " into your account and your balance is $"
+        << account_balance << ". Thanks for coming to the banks." << endl;
+    return account_balance;
+
+}
+
+
+
+int withdraw(int balance) {
+    int user2;
+    account_balance = balance;
+    cout << "How much would you like to withdrawl?: $";       //prompt user for withdrawl amount 
+    cin >> user2;       // store withdrawl amount in variable
+    if (user2 > balance)
+    {
+        cout << "That amount is greater than your balance! You don't have that much money :3" << endl;
+        cout << "How much would you like to withdrawl?" << endl;
+        cin >> user2;
+    }
+
+    account_balance = account_balance - user2;    // subtract withdrawl amount from account balance
+    cout << "You withdrew $" << user2 << " from your account. And your balance is $"
+        << account_balance << ". Thanks for coming to the bank." << endl;      // display account balance and withdrawl amount
+
+    return account_balance;
+}
+
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+
+
